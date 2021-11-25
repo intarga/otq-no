@@ -1,0 +1,4 @@
+- [ ] Testing
+- [ ] Logging
+- [ ] Systemd integration
+- [ ] Frontend
