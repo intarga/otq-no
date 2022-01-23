@@ -1,7 +1,7 @@
 package main
 
 import (
-	"context"
+	"database/sql"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -9,12 +9,12 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/jackc/pgx/v4"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 type server struct {
 	router *chi.Mux
-	db     *pgx.Conn
+	db     *sql.DB
 }
 
 type subscriber struct {
@@ -23,24 +23,23 @@ type subscriber struct {
 }
 
 func (server *server) restartSchema(w http.ResponseWriter, r *http.Request) {
-	tag, err := server.db.Exec(context.Background(),
+	_, err := server.db.Exec(
 		`
-        DROP SCHEMA public CASCADE;
-        CREATE SCHEMA public;
-        CREATE TABLE newsletter
-        (
-            email   text,
-            name    text
-        );
-        CREATE TABLE festival
-        (
-            email   text,
-            name    text
-        );
-        `,
+    DROP TABLE IF EXISTS newsletter;
+    CREATE TABLE newsletter
+    (
+        email   text,
+        name    text
+    );
+    DROP TABLE IF EXISTS festival;
+    CREATE TABLE festival
+    (
+        email   text,
+        name    text
+    );
+    `,
 	) //TODO: unique on emails?
-	fmt.Printf("reset: %v\n", tag.String()) //TODO: replace with logging
-	fmt.Println(err)
+	fmt.Println(err) //TODO: replace with logging
 }
 
 func (server *server) subscribe(w http.ResponseWriter, r *http.Request) {
@@ -54,12 +53,11 @@ func (server *server) subscribe(w http.ResponseWriter, r *http.Request) {
 		return //TODO: return error message?
 	}
 
-	tag, err := server.db.Exec(context.Background(),
+	_, err = server.db.Exec(
 		`INSERT INTO newsletter(email, name) VALUES ($1, $2)`,
 		sub.Email, sub.Name,
 	)
-	fmt.Printf("subscribe: %v\n", tag.String()) //TODO: replace with logging
-	fmt.Println(err)
+	fmt.Println(err) //TODO: replace with logging
 }
 
 func root(w http.ResponseWriter, r *http.Request) {
@@ -74,15 +72,15 @@ func main() {
 
 	var err error
 	//FIXME: db connection not concurrency-safe
-	server.db, err = pgx.Connect(context.Background(), os.Getenv("DATABASE_URL"))
+	server.db, err = sql.Open("sqlite3", "./otq.db")
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Unable to open database: %v\n", err)
 		os.Exit(1)
 	}
-	defer server.db.Close(context.Background())
+	defer server.db.Close()
 
 	server.router.Get("/", root)
-	server.router.Patch("/restartSchema", server.restartSchema)
+	server.router.Patch("/restartSchema", server.restartSchema) // TODO: remove before going live
 	server.router.Post("/subscribe", server.subscribe)
 
 	fmt.Println("Opening server on :8080")

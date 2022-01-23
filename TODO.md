@@ -2,3 +2,4 @@
 - [ ] Logging
 - [ ] Systemd integration
 - [ ] Frontend
+- [x] Migrate to SQLite
