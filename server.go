@@ -60,10 +60,6 @@ func (server *server) subscribe(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(err) //TODO: replace with logging
 }
 
-func root(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Hello root"))
-}
-
 func main() {
 	var server server
 
@@ -79,9 +75,11 @@ func main() {
 	}
 	defer server.db.Close()
 
-	server.router.Get("/", root)
 	server.router.Patch("/restartSchema", server.restartSchema) // TODO: remove before going live
 	server.router.Post("/subscribe", server.subscribe)
+
+	fs := http.FileServer(http.Dir("frontend"))
+	server.router.Handle("/*", fs)
 
 	fmt.Println("Opening server on :8080")
 	http.ListenAndServe(":8080", server.router)
