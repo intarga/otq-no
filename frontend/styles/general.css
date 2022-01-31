@@ -1,0 +1,230 @@
+/* ------  VARIABLES  ------- */
+:root {
+  --onesixth: calc(100% / 6);
+  --white: hsl(0, 0%, 93%);
+  --red: hsl(352, 100%, 40%);
+  --orange: hsl(27, 100%, 47%);
+  --yellow: hsl(51, 100%, 43%);
+  --green: hsl(83, 100%, 25%);
+  --blue: hsl(211, 75%, 39%);
+  --violet: hsl(287, 100%, 25%);
+  --black: hsl(0, 0%, 7%);
+  --white-v: 237, 237, 237;
+  --red-v: 204, 0, 27;
+  --orange-v: 240, 108, 0;
+  --yellow-v: 219, 186, 0;
+  --green-v: 79, 128, 0;
+  --blue-v: 25, 97, 174;
+  --violet-v: 100, 0, 128;
+  --black-v: 18, 18, 18;
+  --rainbow: linear-gradient(
+    to right,
+    var(--red) 0%,
+    var(--red) var(--onesixth),
+    var(--orange) var(--onesixth),
+    var(--orange) calc(2 * var(--onesixth)),
+    var(--yellow) calc(2 * var(--onesixth)),
+    var(--yellow) calc(3 * var(--onesixth)),
+    var(--green) calc(3 * var(--onesixth)),
+    var(--green) calc(4 * var(--onesixth)),
+    var(--blue) calc(4 * var(--onesixth)),
+    var(--blue) calc(5 * var(--onesixth)),
+    var(--violet) calc(5 * var(--onesixth)),
+    var(--violet) 100%
+  );
+  --rainbow-extremes: linear-gradient(
+    to right,
+    var(--red) 0%,
+    var(--red) 50%,
+    var(--violet) 50%,
+    var(--violet) 100%
+  );
+  --transparency-xl: 0.1;
+  --transparency-lg: 0.3;
+  --transparency-md: 0.5;
+  --content-width-xl: 50rem;
+  --font-lg: 2rem;
+  --gap-xs: 0.25rem;
+  --gap-sm: 0.75rem;
+  --gap-md: 1rem;
+  --border-xs: 0.1rem;
+  --border-sm: 0.15rem;
+  --border-lg: 0.5rem;
+}
+
+/* -------  GENERAL ------- */
+
+html {
+  min-height: 100vh;
+  background-color: var(--white);
+  background-image: var(--rainbow-extremes), var(--rainbow-extremes);
+  background-size: 100% 0.5rem;
+  background-position: 100% 0, 0 100%;
+  background-repeat: no-repeat;
+}
+
+body {
+  height: 100%;
+}
+
+h1 {
+  font-size: var(--font-lg);
+  margin: var(--gap-md) 0;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+*[href]:focus-visible,
+*[tabindex]:focus-visible {
+  outline: var(--black) solid var(--border-sm);
+}
+
+img {
+  max-width: 100%;
+}
+
+/* -------  ELEMENTS  ------- */
+#content-container {
+  max-width: var(--content-width-xl);
+  height: 100%;
+  min-height: 100vh;
+  border-style: solid;
+  border-width: var(--border-lg) 0;
+  border-image: var(--rainbow) 100% 1;
+  margin: auto;
+}
+
+/* ----- SKIP ----- */
+#skip-link {
+  overflow: hidden;
+  height: 0;
+  width: 0;
+  position: absolute;
+}
+
+#skip-link:focus {
+  height: auto;
+  width: auto;
+  overflow: auto;
+  text-transform: uppercase;
+  color: var(--black);
+  background-color: var(--white);
+  border-style: solid;
+  border-width: var(--border-lg);
+  border-image: var(--rainbow) 100% 1;
+  margin: var(--gap-lg) var(--gap-xs);
+  padding: var(--gap-xs);
+}
+
+/* ----- NAV  ----- */
+#top-nav {
+  /* width: 100vw; */
+}
+
+.top-nav-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: end;
+}
+
+.top-nav-listitem {
+  list-style: none;
+  text-align: center;
+  padding: 0 var(--gap-xs);
+  display: block;
+  justify-self: stretch;
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-sm);
+}
+
+.top-nav-listitem:nth-of-type(1) {
+  border-color: rgba(var(--red-v), 0);
+  background-color: rgba(var(--red-v), var(--transparency-xl));
+}
+
+.top-nav-listitem:nth-of-type(1).active {
+  border-color: rgba(var(--red-v), var(--transparency-md));
+}
+
+.top-nav-listitem:nth-of-type(1):hover,
+.top-nav-listitem:nth-of-type(1):focus-visible {
+  background-color: rgba(var(--red-v), var(--transparency-lg));
+}
+
+.top-nav-listitem:nth-of-type(2) {
+  border-color: rgba(var(--orange-v), 0);
+  background-color: rgba(var(--orange-v), var(--transparency-xl));
+}
+
+.top-nav-listitem:nth-of-type(2).active {
+  border-color: rgba(var(--orange-v), var(--transparency-md));
+}
+
+.top-nav-listitem:nth-of-type(2):hover,
+.top-nav-listitem:nth-of-type(2):focus-visible {
+  background-color: rgba(var(--orange-v), var(--transparency-lg));
+}
+
+.top-nav-listitem:nth-of-type(3) {
+  border-color: rgba(var(--yellow-v), 0);
+  background-color: rgba(var(--yellow-v), var(--transparency-xl));
+}
+
+.top-nav-listitem:nth-of-type(3).active {
+  border-color: rgba(var(--yellow-v), var(--transparency-md));
+}
+
+.top-nav-listitem:nth-of-type(3):hover,
+.top-nav-listitem:nth-of-type(3):focus-visible {
+  background-color: rgba(var(--yellow-v), var(--transparency-lg));
+}
+
+.top-nav-listitem:nth-of-type(4) {
+  border-color: rgba(var(--green-v), 0);
+  background-color: rgba(var(--green-v), var(--transparency-xl));
+}
+
+.top-nav-listitem:nth-of-type(4).active {
+  border-color: rgba(var(--green-v), var(--transparency-md));
+}
+
+.top-nav-listitem:nth-of-type(4):hover,
+.top-nav-listitem:nth-of-type(4):focus-visible {
+  background-color: rgba(var(--green-v), var(--transparency-lg));
+}
+
+.top-nav-listitem:nth-of-type(5) {
+  border-color: rgba(var(--blue-v), 0);
+  background-color: rgba(var(--blue-v), var(--transparency-xl));
+}
+
+.top-nav-listitem:nth-of-type(5).active {
+  border-color: rgba(var(--blue-v), var(--transparency-md));
+}
+
+.top-nav-listitem:nth-of-type(5):hover,
+.top-nav-listitem:nth-of-type(5):focus-visible {
+  background-color: rgba(var(--blue-v), var(--transparency-lg));
+}
+
+.top-nav-listitem:nth-of-type(6) {
+  border-color: rgba(var(--violet-v), 0);
+  background-color: rgba(var(--violet-v), var(--transparency-xl));
+}
+
+.top-nav-listitem:nth-of-type(6).active {
+  border-color: rgba(var(--violet-v), var(--transparency-md));
+}
+
+.top-nav-listitem:nth-of-type(6):hover,
+.top-nav-listitem:nth-of-type(6):focus-visible {
+  background-color: rgba(var(--violet-v), var(--transparency-lg));
+}
+
+/* ----- MAIN  ----- */
+main {
+  margin: auto;
+  max-width: var(--content-width-xl);
+}
