@@ -1,0 +1,4 @@
+JS:
+- "Cursor: pointer" to .top-nav-listitem IF it contains child
+- Event listener for clicking outside dropdown menu
+- On page resize, if any of the .top-nav-listitems become bigger than 1/6 of the page width, default to hamburger menu 
