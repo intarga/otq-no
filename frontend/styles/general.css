@@ -56,12 +56,12 @@
 
 html {
   min-height: 100vh;
+  background-color: var(--white);
 }
 
 /* Sets coloured extremities for wide screens */
 @media screen and (min-width: 50rem) {
   html {
-    background-color: var(--white);
     background-image: var(--rainbow-extremes), var(--rainbow-extremes);
     background-size: 100% 0.5rem;
     background-position: 100% 0, 0 100%;
