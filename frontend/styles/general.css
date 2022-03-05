@@ -44,7 +44,7 @@
   --transparency-lg: 0.3;
   --transparency-md: 0.5;
   --transparency-xs: 0.9;
-  --content-width-xl: 50rem;
+  --content-width-xl: 70rem;
   --font-lg: 2rem;
   --gap-xs: 0.25rem;
   --gap-sm: 0.75rem;
@@ -65,7 +65,7 @@ html {
 }
 
 /* Sets coloured extremities for wide screens */
-@media screen and (min-width: 50rem) {
+@media screen and (min-width: 70rem) {
   #all-encompasser {
     background-image: var(--rainbow-extremes), var(--rainbow-extremes);
     background-size: 100% var(--border-lg-corrected);
