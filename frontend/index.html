@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="./styles/reset.css" />
     <link rel="stylesheet" type="text/css" href="./styles/general.css" />
     <link rel="stylesheet" type="text/css" href="./styles/index.css" />
+    <script src="./scripts/style.js"></script>
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -39,44 +40,54 @@
   </head>
 
   <body>
-    <div id="content-container">
-      <a tabindex="1" href="#main" id="skip-link">Skip to content</a>
-      <nav id="top-nav">
-        <label id="top-nav-label" for="top-nav-toggle">
-          <span id="top-nav-label-txt">Open/Close navbar menu</span>
-          <div id="top-nav-btn"></div>
-        </label>
-        <input type="checkbox" id="top-nav-toggle" />
-        <ul class="top-nav-list">
-          <li class="top-nav-listitem"></li>
-          <li class="top-nav-listitem"></li>
-          <li class="top-nav-listitem"><a>Home</a></li>
-          <li class="top-nav-listitem"><a>Test</a></li>
-          <li class="top-nav-listitem"><a>Test</a></li>
-          <li class="top-nav-listitem"><a>Test</a></li>
-        </ul>
-      </nav>
-      <main id="main">
-        <section id="hero">
-          <div id="hero-left">
-            <h1 class="hero-title">Lorem, ipsum dolor.</h1>
-            <p class="hero-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia
-              reiciendis quo enim quaerat consectetur atque.
-            </p>
-            <button class="hero-btn">Lorem</button>
-          </div>
-          <div id="hero-right">
-            <img
-              src="https://via.placeholder.com/450"
-              alt="Placeholder"
-              id="hero-img"
-            />
-          </div>
-        </section>
-        <section class="links"></section>
-      </main>
-      <footer></footer>
+    <div id="all-encompasser">
+      <div id="content-container">
+        <a tabindex="1" href="#main" id="skip-link">Skip to content</a>
+        <nav id="top-nav">
+          <label id="top-nav-label" for="top-nav-toggle">
+            <span id="top-nav-label-txt">Open/Close navbar menu</span>
+            <div id="top-nav-btn"></div>
+          </label>
+          <input type="checkbox" id="top-nav-toggle" />
+          <ul class="top-nav-list">
+            <li class="top-nav-listitem" aria-hidden="true"></li>
+            <li class="top-nav-listitem" aria-hidden="true"></li>
+            <li class="top-nav-listitem active">
+              <a class="top-nav-listitem-link">Home</a>
+            </li>
+            <li class="top-nav-listitem">
+              <a class="top-nav-listitem-link">Test</a>
+            </li>
+            <li class="top-nav-listitem">
+              <a class="top-nav-listitem-link">Test</a>
+            </li>
+            <li class="top-nav-listitem">
+              <a class="top-nav-listitem-link">Test</a>
+            </li>
+          </ul>
+        </nav>
+        <main id="main">
+          <section id="hero">
+            <div id="hero-left">
+              <h1 class="hero-title">Lorem, ipsum dolor.</h1>
+              <p class="hero-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia
+                reiciendis quo enim quaerat consectetur atque.
+              </p>
+              <button class="hero-btn">Lorem</button>
+            </div>
+            <div id="hero-right">
+              <img
+                src="https://via.placeholder.com/450"
+                alt="Placeholder"
+                id="hero-img"
+              />
+            </div>
+          </section>
+          <section class="links"></section>
+        </main>
+        <footer></footer>
+      </div>
     </div>
   </body>
 </html>

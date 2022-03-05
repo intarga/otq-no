@@ -50,6 +50,7 @@
   --border-xs: 0.1rem;
   --border-sm: 0.15rem;
   --border-lg: 0.5rem;
+  --border-lg-corrected: calc(0.5rem * 0.97);
 }
 
 /* -------  GENERAL ------- */
@@ -57,13 +58,14 @@
 html {
   min-height: 100vh;
   background-color: var(--white);
+  box-sizing: border-box;
 }
 
 /* Sets coloured extremities for wide screens */
 @media screen and (min-width: 50rem) {
-  html {
+  #all-encompasser {
     background-image: var(--rainbow-extremes), var(--rainbow-extremes);
-    background-size: 100% 0.5rem;
+    background-size: 100% var(--border-lg-corrected);
     background-position: 100% 0, 0 100%;
     background-repeat: no-repeat;
   }
@@ -89,6 +91,28 @@ textarea:focus-visible,
 
 img {
   max-width: 100%;
+}
+
+/* ------- SKIP ------- */
+#skip-link {
+  overflow: hidden;
+  height: 0;
+  width: 0;
+  position: absolute;
+}
+
+#skip-link:focus {
+  height: auto;
+  width: auto;
+  overflow: auto;
+  text-transform: uppercase;
+  color: var(--black);
+  background-color: var(--white);
+  border-style: solid;
+  border-width: var(--border-lg);
+  border-image: var(--rainbow) 100% 1;
+  margin: var(--gap-lg) var(--gap-xs);
+  padding: var(--gap-xs);
 }
 
 /* -------  ELEMENTS  ------- */
@@ -117,34 +141,18 @@ img {
   }
 }
 
-/* ----- SKIP ----- */
-#skip-link {
-  overflow: hidden;
-  height: 0;
-  width: 0;
-  position: absolute;
-}
-
-#skip-link:focus {
-  height: auto;
-  width: auto;
-  overflow: auto;
-  text-transform: uppercase;
-  color: var(--black);
-  background-color: var(--white);
-  border-style: solid;
-  border-width: var(--border-lg);
-  border-image: var(--rainbow) 100% 1;
-  margin: var(--gap-lg) var(--gap-xs);
-  padding: var(--gap-xs);
-}
-
 /* ----- NAV  ----- */
 
 .top-nav-listitem {
   list-style: none;
   text-align: center;
   display: block;
+}
+
+.top-nav-listitem-link {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 }
 
 /* Top navbar for medium+ screens (top rainbow set here) */
@@ -156,105 +164,105 @@ img {
   }
 
   .top-nav-listitem {
-    padding: 0 var(--gap-xs);
     justify-self: stretch;
-    border-bottom-style: solid;
-    border-bottom-width: var(--border-sm);
-    border-top: var(--border-lg) solid;
+    border-top-width: var(--border-lg);
+    border-top-style: solid;
   }
-
-  .top-nav-listitem > a {
-    cursor: pointer;
-  }
-
   .top-nav-listitem:nth-of-type(1) {
-    /*  */
     border-top-color: var(--red);
-    border-bottom-color: rgba(var(--red-v), 0);
     background-color: rgba(var(--red-v), var(--transparency-xl));
   }
-
-  .top-nav-listitem:nth-of-type(1).active {
-    border-bottom-color: rgba(var(--red-v), var(--transparency-md));
-  }
-
-  .top-nav-listitem:nth-of-type(1):hover,
-  .top-nav-listitem:nth-of-type(1):focus-visible {
-    background-color: rgba(var(--red-v), var(--transparency-lg));
-  }
-
   .top-nav-listitem:nth-of-type(2) {
     border-top-color: var(--orange);
-    border-bottom-color: rgba(var(--orange-v), 0);
     background-color: rgba(var(--orange-v), var(--transparency-xl));
   }
-
-  .top-nav-listitem:nth-of-type(2).active {
-    border-bottom-color: rgba(var(--orange-v), var(--transparency-md));
-  }
-
-  .top-nav-listitem:nth-of-type(2):hover,
-  .top-nav-listitem:nth-of-type(2):focus-visible {
-    background-color: rgba(var(--orange-v), var(--transparency-lg));
-  }
-
   .top-nav-listitem:nth-of-type(3) {
     border-top-color: var(--yellow);
-    border-bottom-color: rgba(var(--yellow-v), 0);
     background-color: rgba(var(--yellow-v), var(--transparency-xl));
   }
-
-  .top-nav-listitem:nth-of-type(3).active {
-    border-bottom-color: rgba(var(--yellow-v), var(--transparency-md));
-  }
-
-  .top-nav-listitem:nth-of-type(3):hover,
-  .top-nav-listitem:nth-of-type(3):focus-visible {
-    background-color: rgba(var(--yellow-v), var(--transparency-lg));
-  }
-
   .top-nav-listitem:nth-of-type(4) {
     border-top-color: var(--green);
-    border-bottom-color: rgba(var(--green-v), 0);
     background-color: rgba(var(--green-v), var(--transparency-xl));
   }
-
-  .top-nav-listitem:nth-of-type(4).active {
-    border-bottom-color: rgba(var(--green-v), var(--transparency-md));
-  }
-
-  .top-nav-listitem:nth-of-type(4):hover,
-  .top-nav-listitem:nth-of-type(4):focus-visible {
-    background-color: rgba(var(--green-v), var(--transparency-lg));
-  }
-
   .top-nav-listitem:nth-of-type(5) {
     border-top-color: var(--blue);
-    border-bottom-color: rgba(var(--blue-v), 0);
     background-color: rgba(var(--blue-v), var(--transparency-xl));
   }
-
-  .top-nav-listitem:nth-of-type(5).active {
-    border-bottom-color: rgba(var(--blue-v), var(--transparency-md));
-  }
-
-  .top-nav-listitem:nth-of-type(5):hover,
-  .top-nav-listitem:nth-of-type(5):focus-visible {
-    background-color: rgba(var(--blue-v), var(--transparency-lg));
-  }
-
   .top-nav-listitem:nth-of-type(6) {
     border-top-color: var(--violet);
-    border-bottom-color: rgba(var(--violet-v), 0);
     background-color: rgba(var(--violet-v), var(--transparency-xl));
   }
 
-  .top-nav-listitem:nth-of-type(6).active {
-    border-bottom-color: rgba(var(--violet-v), var(--transparency-md));
+  .top-nav-listitem-link {
+    cursor: pointer;
+    padding: 0 var(--gap-xs);
+    border-bottom-style: solid;
+    border-bottom-width: var(--border-sm);
   }
 
-  .top-nav-listitem:nth-of-type(6):hover,
-  .top-nav-listitem:nth-of-type(6):focus-visible {
+  .top-nav-listitem:nth-of-type(1) .top-nav-listitem-link {
+    border-bottom-color: rgba(var(--red-v), 0);
+  }
+  .top-nav-listitem:nth-of-type(1).active .top-nav-listitem-link {
+    border-bottom-color: rgba(var(--red-v), var(--transparency-md));
+  }
+  .top-nav-listitem:nth-of-type(1):hover .top-nav-listitem-link,
+  .top-nav-listitem:nth-of-type(1):focus-visible .top-nav-listitem-link {
+    background-color: rgba(var(--red-v), var(--transparency-lg));
+  }
+
+  .top-nav-listitem:nth-of-type(2) .top-nav-listitem-link {
+    border-bottom-color: rgba(var(--orange-v), 0);
+  }
+  .top-nav-listitem:nth-of-type(2).active .top-nav-listitem-link {
+    border-bottom-color: rgba(var(--orange-v), var(--transparency-md));
+  }
+  .top-nav-listitem:nth-of-type(2):hover .top-nav-listitem-link,
+  .top-nav-listitem:nth-of-type(2):focus-visible .top-nav-listitem-link {
+    background-color: rgba(var(--orange-v), var(--transparency-lg));
+  }
+
+  .top-nav-listitem:nth-of-type(3) .top-nav-listitem-link {
+    border-bottom-color: rgba(var(--yellow-v), 0);
+  }
+  .top-nav-listitem:nth-of-type(3).active .top-nav-listitem-link {
+    border-bottom-color: rgba(var(--yellow-v), var(--transparency-md));
+  }
+  .top-nav-listitem:nth-of-type(3):hover .top-nav-listitem-link,
+  .top-nav-listitem:nth-of-type(3):focus-visible .top-nav-listitem-link {
+    background-color: rgba(var(--yellow-v), var(--transparency-lg));
+  }
+
+  .top-nav-listitem:nth-of-type(4) .top-nav-listitem-link {
+    border-bottom-color: rgba(var(--green-v), 0);
+  }
+  .top-nav-listitem:nth-of-type(4).active .top-nav-listitem-link {
+    border-bottom-color: rgba(var(--green-v), var(--transparency-md));
+  }
+  .top-nav-listitem:nth-of-type(4):hover .top-nav-listitem-link,
+  .top-nav-listitem:nth-of-type(4):focus-visible .top-nav-listitem-link {
+    background-color: rgba(var(--green-v), var(--transparency-lg));
+  }
+
+  .top-nav-listitem:nth-of-type(5) .top-nav-listitem-link {
+    border-bottom-color: rgba(var(--blue-v), 0);
+  }
+  .top-nav-listitem:nth-of-type(5).active .top-nav-listitem-link {
+    border-bottom-color: rgba(var(--blue-v), var(--transparency-md));
+  }
+  .top-nav-listitem:nth-of-type(5):hover .top-nav-listitem-link,
+  .top-nav-listitem:nth-of-type(5):focus-visible .top-nav-listitem-link {
+    background-color: rgba(var(--blue-v), var(--transparency-lg));
+  }
+
+  .top-nav-listitem:nth-of-type(6) .top-nav-listitem-link {
+    border-bottom-color: rgba(var(--violet-v), 0);
+  }
+  .top-nav-listitem:nth-of-type(6).active .top-nav-listitem-link {
+    border-bottom-color: rgba(var(--violet-v), var(--transparency-md));
+  }
+  .top-nav-listitem:nth-of-type(6):hover .top-nav-listitem-link,
+  .top-nav-listitem:nth-of-type(6):focus-visible .top-nav-listitem-link {
     background-color: rgba(var(--violet-v), var(--transparency-lg));
   }
 
