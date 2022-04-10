@@ -89,4 +89,8 @@
     grid-template-columns: 1fr;
     text-align: center;
   }
+
+  .links {
+    grid-template-columns: 1fr;
+  }
 }
