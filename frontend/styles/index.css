@@ -15,6 +15,7 @@
   top: 50%;
   transform: translateY(-50%);
   text-align: center;
+  padding: 2em;
 }
 
 @media screen and (max-width: 50rem) {
