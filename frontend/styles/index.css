@@ -22,6 +22,68 @@
   margin-top: 1em;
 }
 
+.links {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2em
+}
+
+.link {
+  text-align: center;
+  padding-bottom: 0.5em;
+}
+
+.link:nth-of-type(1) {
+  border-top-color: var(--red);
+  background-color: rgba(var(--red-v), var(--transparency-xl));
+}
+.link:nth-of-type(2) {
+  border-top-color: var(--orange);
+  background-color: rgba(var(--orange-v), var(--transparency-xl));
+}
+.link:nth-of-type(3) {
+  border-top-color: var(--yellow);
+  background-color: rgba(var(--yellow-v), var(--transparency-xl));
+}
+.link:nth-of-type(4) {
+  border-top-color: var(--green);
+  background-color: rgba(var(--green-v), var(--transparency-xl));
+}
+.link:nth-of-type(5) {
+  border-top-color: var(--blue);
+  background-color: rgba(var(--blue-v), var(--transparency-xl));
+}
+.link:nth-of-type(6) {
+  border-top-color: var(--violet);
+  background-color: rgba(var(--violet-v), var(--transparency-xl));
+}
+
+.link-title {
+  color: var(--white);
+  font-weight: bold;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+.link:nth-of-type(1) .link-title {
+  background-color: var(--red);
+}
+.link:nth-of-type(2) .link-title {
+  background-color: var(--orange);
+}
+.link:nth-of-type(3) .link-title {
+  background-color: var(--yellow);
+}
+.link:nth-of-type(4) .link-title {
+  background-color: var(--green);
+}
+.link:nth-of-type(5) .link-title {
+  background-color: var(--blue);
+}
+.link:nth-of-type(6) .link-title {
+  background-color: var(--violet);
+}
+
 @media screen and (max-width: 50rem) {
   #hero {
     grid-template-columns: 1fr;
